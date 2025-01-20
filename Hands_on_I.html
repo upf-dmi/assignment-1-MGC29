@@ -351,7 +351,7 @@ display: none;
 
 <h1 class="title toc-ignore">Hands-on session 1</h1>
 <h4 class="author">Montse Garcia Cerqueda (<a href="mailto:mgcerqueda@gmail.com" class="email">mgcerqueda@gmail.com</a>)</h4>
-<h4 class="date">Last update: 14 January, 2025</h4>
+<h4 class="date">Last update: 15 January, 2025</h4>
 
 </div>
 
@@ -495,6 +495,12 @@ md.pattern(dataset,  rotate.names = TRUE)</code></pre>
 ## 4            1    1  0 1
 ## 2            1    0  1 1
 ##              0    2  4 6</code></pre>
+<pre class="r"><code>dataset$ca &lt;- factor(dataset$ca, levels = c(0, 1, 2, 3))
+dataset$thal &lt;- factor(dataset$thal, levels = c(3, 6, 7))
+methods &lt;- c(&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;pmm&quot;,&quot;polyreg&quot;,&quot;&quot;,&quot;&quot;)
+names(methods) &lt;- names(dataset)
+imputed_data &lt;- mice(dataset, method = methods, m = 5, maxit = 100, seed = 123)
+dataset &lt;- complete(imputed_data)</code></pre>
 </div>
 </div>
 <div id="create-visualizations-in-order-to-show-which-variables-seem-to-be-more-associated-with-heart-disease" class="section level2" number="1.2">
@@ -523,7 +529,7 @@ the groups (G1 to G4)</p>
 <div id="improve-figure-2-of-the-publication" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Improve figure 2 of
 the publication</h2>
-<p>Add a second annotation with information of deathm and a third one
+<p>Add a second annotation with information of death and a third one
 with information of gender</p>
 </div>
 </div>
