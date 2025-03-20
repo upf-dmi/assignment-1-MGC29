@@ -541,6 +541,7 @@ Additionally, we have missing values, marked as NI, so we want to change them to
 Finally, now some patients have many cytokines values, which we don't want. According to the article, *only the median value of each cytokine or laboratory parameter was considered to compare patients*. So we will do the same. To do so we will transform our data-set to a long format, using `pivot_longer()`, which will contains the IDs and Day as normal and the cytokine name. Then we will make sure all the measurements are numeric and finally we will perform the mean. 
 
 ```{r}
+library(tidyr)
 colnames(clinical_data_2)[1] <- "ID"
 clinical_data_2 <- clinical_data_2 |>
   fill(ID, .direction = "down")
